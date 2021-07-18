@@ -1,4 +1,9 @@
 ﻿@model IEnumerable<_19DTHA_A_DO_AN.Models.GroceryModel.ProductType>
+
+@{
+    Layout = null;
+}
+
 <!-- banner -->
 <div class="banner">
     <div class="w3l_banner_nav_left">
@@ -20,7 +25,7 @@
                     {
                         <li><a href="@Url.Action("Product", "Grocery", new { id = i.id})">@i.Name</a></li>
                     }
-                    
+
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>

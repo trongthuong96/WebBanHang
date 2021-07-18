@@ -17,7 +17,7 @@ namespace _19DTHA_A_DO_AN.Areas.admin
             context.MapRoute(
                 "admin_default",
                 "admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index",Controller="Products" , id = UrlParameter.Optional }
             );
         }
     }

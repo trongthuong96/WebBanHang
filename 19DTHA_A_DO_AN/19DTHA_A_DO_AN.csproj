@@ -168,6 +168,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
+    <Compile Include="Areas\admin\Controllers\ManufacturersController.cs" />
+    <Compile Include="Areas\admin\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\admin\Controllers\ProductTypesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -355,6 +358,25 @@
     <Content Include="Asset\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Asset\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Areas\admin\Views\web.config" />
+    <Content Include="Areas\admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\admin\Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Areas\admin\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\admin\Views\Shared\Lockout.cshtml" />
+    <Content Include="Areas\admin\Views\Products\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Products\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Products\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Products\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Products\Index.cshtml" />
+    <Content Include="Areas\admin\Views\ProductTypes\Create.cshtml" />
+    <Content Include="Areas\admin\Views\ProductTypes\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\ProductTypes\Details.cshtml" />
+    <Content Include="Areas\admin\Views\ProductTypes\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\ProductTypes\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Manufacturers\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Manufacturers\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Manufacturers\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Manufacturers\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Manufacturers\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -404,13 +426,11 @@
     <Content Include="Views\Grocery\Single.cshtml" />
     <Content Include="Views\Grocery\Vegetables.cshtml" />
     <Content Include="Views\Grocery\Menu.cshtml" />
-    <Content Include="Views\Shared\_Layout1.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\admin\Controllers\" />
     <Folder Include="Areas\admin\Data\" />
-    <Folder Include="Areas\admin\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
