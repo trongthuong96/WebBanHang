@@ -18,10 +18,17 @@ namespace _19DTHA_A_DO_AN.Controllers
             _dbContext = new ApplicationDbContext();
         }
 
-        public ActionResult Index(int page =1 ,int pagesize = 16 )
+        public ActionResult Index(string searchString, int page =1 ,int pagesize = 16 )
         {
             var products = _dbContext.Products
                 .ToList().ToPagedList(page, pagesize);
+
+            if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+            {
+                products = products
+                    .Where(s => s.Name.Contains(searchString))
+                    .ToList().ToPagedList(page, pagesize); //lọc theo chuỗi tìm kiếm
+            }
 
             return View("Index", products);
         }

@@ -42,11 +42,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="w3l_offers">
             @Html.ActionLink("Today's special Offers !", "products", "Grocery")
         </div>
+
+        @*Thêm tìm kiếm sản phẩm*@
         <div class="w3l_search">
-            <form action="#" method="post">
-                <input type="text" name="Product" value="Search a product..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
-                <input type="submit" value=" ">
+            <form>
+                @using (Html.BeginForm())
+                {
+                    @*<input type="text" name="Product" value="Search a product..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">*@
+                    @Html.TextBox("SearchString",null, new { name = "Product", placeholder = "Search a product...", required = "" }) 
+                    <input type="submit" value=" ">
+                }
             </form>
+       
         </div>
         <div class="product_list_header">
             <form action="#" method="post" class="last">
