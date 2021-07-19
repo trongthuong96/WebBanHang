@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace _19DTHA_A_DO_AN.Controllers
 {
@@ -16,10 +18,11 @@ namespace _19DTHA_A_DO_AN.Controllers
             _dbContext = new ApplicationDbContext();
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int page =1 ,int pagesize = 16 )
         {
             var products = _dbContext.Products
-                .ToList();
+                .ToList().ToPagedList(page, pagesize);
+
             return View("Index", products);
         }
 

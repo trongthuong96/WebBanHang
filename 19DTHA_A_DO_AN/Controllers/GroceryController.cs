@@ -1,5 +1,7 @@
 ﻿using _19DTHA_A_DO_AN.Models;
 using _19DTHA_A_DO_AN.Models.GroceryModel;
+using PagedList;
+using PagedList.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -27,12 +29,12 @@ namespace _19DTHA_A_DO_AN.Controllers
             return View("Menu",type);
         }
 
-        public ActionResult Product(int ? id)
+        public ActionResult Product(int ? id, int page = 1, int pagesize = 4)
         {
             var products = _dbContext.Products
                 .Include(n => n.ProductType)
                 .Where(p => p.ProductType.id == id)
-                .ToList();
+                .ToList().ToPagedList(page, pagesize);
             return View("Products", products);
         }
 

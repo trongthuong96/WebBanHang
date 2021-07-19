@@ -1,4 +1,7 @@
-﻿@model IEnumerable<_19DTHA_A_DO_AN.Models.GroceryModel.Product>
+﻿@model IPagedList<_19DTHA_A_DO_AN.Models.GroceryModel.Product>
+
+@using PagedList;
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_LayoutGrocery.cshtml";
@@ -129,9 +132,11 @@
                     </div>
                 </div>
             }
-            </div>
+        </div>
         <div class="clearfix"> </div>
+    </div>
+    <div class="col-md-12 text-center clearfix">
+        @Html.PagedListPager(Model, sotrang => Url.Action("Index", new { page = sotrang }))
     </div>
 </div>
 <!-- //top-brands -->
-
