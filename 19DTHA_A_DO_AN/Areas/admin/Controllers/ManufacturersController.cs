@@ -11,7 +11,7 @@ using _19DTHA_A_DO_AN.Models.GroceryModel;
 
 namespace _19DTHA_A_DO_AN.Areas.admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class ManufacturersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

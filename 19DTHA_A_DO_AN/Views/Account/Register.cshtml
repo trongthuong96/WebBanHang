@@ -21,10 +21,12 @@
                         <div class="form">
                             <h2>Create an account</h2>
                             <form>
+
+                                @Html.TextBoxFor(m => m.UserName, new { type = "text", name = "UserName", placeholder = "UserName", required = " " })
                                 @Html.TextBoxFor(m => m.Email, new { type = "text", name = "Email", placeholder = "Email", required = " " })
                                 @Html.TextBoxFor(m => m.Password, new { type = "password", name = "Password", placeholder = "Password", required = " " })
                                 @Html.TextBoxFor(m => m.ConfirmPassword, new { type = "password", name = "ConfirmPassword", placeholder = "ConfirmPassword", required = " " })
-                              
+                                @Html.ValidationSummary("", new { @class = "text-danger" })
                                 <input type="submit" value="Register">
                             </form>
                         </div>

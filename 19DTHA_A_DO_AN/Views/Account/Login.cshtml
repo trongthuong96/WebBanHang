@@ -18,23 +18,25 @@
                     @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
                     {
                         @Html.AntiForgeryToken()
-                        <div class="form">
-                            <h2>Login to your account</h2>
-                            <form @*action="#" method="post"*@>
+                <div class="form">
+                    <h2>Login to your account</h2>
+                    
+                    <form @*action="#" method="post"*@>
 
-                                @Html.TextBoxFor(m => m.Email, new { type = "text", name = "Email", placeholder = "Email", required = " " })
-                                @Html.TextBoxFor(m => m.Password, new { type = "password", name = "Password", placeholder = "Password", required = " " })
-                                <div class="form-group">
-                                    <div class="col-md-offset-1 ">
-                                        <div class="checkbox">
-                                            @Html.CheckBoxFor(m => m.RememberMe)
-                                            @Html.LabelFor(m => m.RememberMe)
-                                        </div>
-                                    </div>
+                        @Html.TextBoxFor(m => m.Email, new { type = "text", name = "Email", placeholder = "Email", required = " " })
+                        @Html.TextBoxFor(m => m.Password, new { type = "password", name = "Password", placeholder = "Password", required = " " })
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <div class="col-md-offset-1 ">
+                                <div class="checkbox">
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                    @Html.LabelFor(m => m.RememberMe)
                                 </div>
-                                <input type="submit" value="Login">
-                            </form>
+                            </div>
                         </div>
+                        <input type="submit" value="Login">
+                    </form>
+                </div>
 
                         <div class="cta"><a href="#">Forgot your password?</a></div>
                     }
