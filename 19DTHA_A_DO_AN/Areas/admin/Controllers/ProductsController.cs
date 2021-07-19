@@ -51,8 +51,16 @@ namespace _19DTHA_A_DO_AN.Areas.admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Price,Description,Image,ProductTypeId,ManufacturerId")] Product product)
+        public ActionResult Create([Bind(Include = "Id,Name,Price,Description,Image,ProductTypeId,ManufacturerId")] Product product, HttpPostedFileBase Image)
         {
+            if (Image != null && Image.ContentLength > 0)
+            {
+                string filename = System.IO.Path.GetFileName(Image.FileName);
+                string urlImage = Server.MapPath("~/Asset/images/" + filename);
+                Image.SaveAs(urlImage);
+                product.Image = filename;
+            }    
+
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);
@@ -87,14 +95,28 @@ namespace _19DTHA_A_DO_AN.Areas.admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Price,Description,Image,ProductTypeId,ManufacturerId")] Product product)
+        public ActionResult Edit([Bind(Include = "Id,Name,Price,Description,Image,ProductTypeId,ManufacturerId")] Product product, HttpPostedFileBase editImage)
         {
+            Product modifyProduct = db.Products.Find(product.Id);
+
+            if (modifyProduct != null)
+            {
+                if(editImage != null && editImage.ContentLength > 0)
+                {
+                    string filename = System.IO.Path.GetFileName(editImage.FileName);
+                    string urlImage = Server.MapPath("~/Asset/images/" + filename);
+                    editImage.SaveAs(urlImage);
+                    modifyProduct.Image = filename;
+                }    
+            }
+
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
+                db.Entry(modifyProduct).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             ViewBag.ManufacturerId = new SelectList(db.Manufacturers, "Id", "Name", product.ManufacturerId);
             ViewBag.ProductTypeId = new SelectList(db.ProductTypes, "id", "Name", product.ProductTypeId);
             return View(product);
