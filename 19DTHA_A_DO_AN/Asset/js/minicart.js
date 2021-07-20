@@ -1896,14 +1896,13 @@ module.exports = Cart;
 
 var mixin = require('./util/mixin');
 
-
 var defaults = module.exports = {
 
     name: 'PPMiniCart',
 
     parent: (typeof document !== 'undefined') ? document.body : null,
 
-    action: 'checkout.html',
+    action: $('.runCart').data('request-url'),
 
     target: '',
 
@@ -1921,7 +1920,6 @@ var defaults = module.exports = {
     }
 
 };
-
 
 /**
  * Mixes in the user config with the default config.

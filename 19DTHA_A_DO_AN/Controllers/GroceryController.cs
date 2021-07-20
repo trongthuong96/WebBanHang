@@ -46,12 +46,26 @@ namespace _19DTHA_A_DO_AN.Controllers
             return View("Products", products);
         }
 
+        [HttpGet]
         public ActionResult Single(int ? id)
         {
             var details = _dbContext.Products
                 .Where(p => p.Id == id)
                 .ToList();
             return View("Single", details);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult Single()
+        {
+            return View();
+        }
+
+        public ActionResult ShopCart()
+        {
+            return View();
         }
     }
 }
