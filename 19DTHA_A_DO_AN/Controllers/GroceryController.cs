@@ -29,19 +29,19 @@ namespace _19DTHA_A_DO_AN.Controllers
             return View("Menu",type);
         }
 
-        public ActionResult Product(string searchString, int ? id, int page = 1, int pagesize = 4)
+        public ActionResult Product(/*string searchString, */int ? id, int page = 1, int pagesize = 4)
         {
             var products = _dbContext.Products
                 .Include(n => n.ProductType)
                 .Where(p => p.ProductType.id == id)
                 .ToList().ToPagedList(page, pagesize);
 
-            if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+           /* if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
             {
                 products = products
                     .Where(s => s.Name.ToLower().Contains(searchString.ToLower()))
                     .ToList().ToPagedList(page, pagesize); //lọc theo chuỗi tìm kiếm
-            }
+            }*/
 
             return View("Products", products);
         }
