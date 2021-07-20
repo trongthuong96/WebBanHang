@@ -53,9 +53,19 @@ namespace _19DTHA_A_DO_AN.Areas.admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Price,Description,Image,ProductTypeId,ManufacturerId")] Product product, HttpPostedFileBase Image)
         {
+
             if (Image != null && Image.ContentLength > 0)
             {
                 string filename = System.IO.Path.GetFileName(Image.FileName);
+                string fullPath = Request.MapPath("~/Asset/images/" + filename);
+                if (System.IO.File.Exists(fullPath))
+                {
+                    /*ViewBag.SuccessMessage = "Item has been added!";*/
+                    ViewBag.Message = "Trung ten anh, vui long doi ten";
+                    ViewBag.ManufacturerId = new SelectList(db.Manufacturers, "Id", "Name", product.ManufacturerId);
+                    ViewBag.ProductTypeId = new SelectList(db.ProductTypes, "id", "Name", product.ProductTypeId);
+                    return View();
+                }
                 string urlImage = Server.MapPath("~/Asset/images/" + filename);
                 Image.SaveAs(urlImage);
                 product.Image = filename;
@@ -103,6 +113,11 @@ namespace _19DTHA_A_DO_AN.Areas.admin.Controllers
             {
                 if(editImage != null && editImage.ContentLength > 0)
                 {
+                    string fullPath = Request.MapPath("~/Asset/images/" + modifyProduct.Image);
+                    if (System.IO.File.Exists(fullPath))
+                    {
+                        System.IO.File.Delete(fullPath);
+                    }
                     string filename = System.IO.Path.GetFileName(editImage.FileName);
                     string urlImage = Server.MapPath("~/Asset/images/" + filename);
                     editImage.SaveAs(urlImage);
