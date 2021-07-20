@@ -158,6 +158,11 @@ namespace _19DTHA_A_DO_AN.Areas.admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = db.Products.Find(id);
+            string fullPath = Request.MapPath("~/Asset/images/" + product.Image);
+            if (System.IO.File.Exists(fullPath))
+            {
+                System.IO.File.Delete(fullPath);
+            }
             db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
