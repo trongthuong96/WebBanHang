@@ -13,26 +13,26 @@
             <ul class="slides">
                 <li>
                     <div class="w3l_banner_nav_right_banner">
-                        <h3>Make your <span>food</span> with Spicy.</h3>
+                      @*  <h3>Make your <span>food</span> with Spicy.</h3>
                         <div class="more">
                             <a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
-                        </div>
+                        </div>*@
                     </div>
                 </li>
                 <li>
                     <div class="w3l_banner_nav_right_banner1">
-                        <h3>Make your <span>food</span> with Spicy.</h3>
+                       @* <h3>Make your <span>food</span> with Spicy.</h3>
                         <div class="more">
                             <a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
-                        </div>
+                        </div>*@
                     </div>
                 </li>
                 <li>
                     <div class="w3l_banner_nav_right_banner2">
-                        <h3>upto <i>50%</i> off.</h3>
+                     @*   <h3>upto <i>50%</i> off.</h3>
                         <div class="more">
                             <a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
-                        </div>
+                        </div>*@
                     </div>
                 </li>
             </ul>
@@ -56,38 +56,7 @@
 <div class="clearfix"></div>
 </div>
 <!-- banner -->
-<div class="banner_bottom">
-    <div class="wthree_banner_bottom_left_grid_sub">
-    </div>
-    <div class="wthree_banner_bottom_left_grid_sub1">
-        <div class="col-md-4 wthree_banner_bottom_left">
-            <div class="wthree_banner_bottom_left_grid">
-                <img src="~/Asset/images/4.jpg" alt=" " class="img-responsive" />
-                <div class="wthree_banner_bottom_left_grid_pos">
-                    <h4>Discount Offer <span>25%</span></h4>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 wthree_banner_bottom_left">
-            <div class="wthree_banner_bottom_left_grid">
-                <img src="~/Asset/images/5.jpg" alt=" " class="img-responsive" />
-                <div class="wthree_banner_btm_pos">
-                    <h3>introducing <span>best store</span> for <i>groceries</i></h3>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 wthree_banner_bottom_left">
-            <div class="wthree_banner_bottom_left_grid">
-                <img src="~/Asset/images/6.jpg" alt=" " class="img-responsive" />
-                <div class="wthree_banner_btm_pos1">
-                    <h3>Save <span>Upto</span> $10</h3>
-                </div>
-            </div>
-        </div>
-        <div class="clearfix"> </div>
-    </div>
-    <div class="clearfix"> </div>
-</div>
+
 <!-- top-brands -->
 <div class="top-brands">
     <div class="container">
@@ -105,7 +74,7 @@
                                 <figure>
                                     <div class="snipcart-item block">
                                         <div class="snipcart-thumb">
-                                            <a href="@Url.Action("Single", "Grocery", new { id = p.Id})"><img src="~/Asset/images/@p.Image" alt=" " class="img-responsive" /></a>
+                                            <a href="@Url.Action("Single", "Grocery", new { id = p.Id})"><img src="~/Asset/images/@p.Image" alt="@p.Image" class="img-responsive" /></a>
                                             <p>@p.Name</p>
                                             @{ var money = p.Price - p.DiscountAmount;}
                                             

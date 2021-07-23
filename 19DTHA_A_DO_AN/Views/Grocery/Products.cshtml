@@ -54,7 +54,7 @@
         </div>
     </div>
     <div class="col-md-12 text-center clearfix">
-        @Html.PagedListPager(Model, sotrang => Url.Action("Products", new { page = sotrang }))
+        @Html.PagedListPager(Model, sotrang => Url.Action("Product", new { page = sotrang }))
     </div>
 </div>
 <div class="clearfix"></div>
