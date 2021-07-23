@@ -30,7 +30,7 @@ Insert into Products values ('Huawei Watch 3', 9990000 , N'Hàng đặt trước
 Insert into Products values ('Huawei watch fit', 3290000  , N'Đồng hồ thông minh Huawei watch fit (PKDH.050)',3 ,'HuweiWatchFit.jpg',3, 1300000)
 Insert into Products values ('Huawei Watch 3', 1490000 , N'Vòng đeo tay thông minh Huawei Band 6 (PKDH.091)',3 ,'HuweiBand6.jpg',3, 200000)
 
-Insert into Products values ('Samsung Galaxy Watch Active 2', 5990000 , N'Đồng hồ thông minh Galaxy Watch Active 2: Thiết kế thời trang, giải pháp theo dõi sức khỏe tuyệt vời',4 ,'SamSungActive2.jpg',4, 3190000)
+Insert into Products values ('Samsung Galaxy Active 2', 5990000 , N'Đồng hồ thông minh Galaxy Watch Active 2: Thiết kế thời trang, giải pháp theo dõi sức khỏe tuyệt vời',4 ,'SamSungActive2.jpg',4, 3190000)
 Insert into Products values ('Samsung Galaxy Watch 3', 9990000 , N'Đồng hồ thông minh Samsung Galaxy Watch 3 viền thép dây da (PKDH.094)',4 ,'SamSungWatch3.jpg',4, 3790000)
 Insert into Products values ('Samsung Galaxy Fit 2', 1090000 , N'Samsung Galaxy Fit 2 - Đồng hồ tiện lợi với một kích thước nhỏ gọn Samsung Fan trên thế giới đã có thể có cho mình lựa đồng hồ thông minh thế hệ mới của hàng là đồng hồ thông minh Galaxy Fit 2. Được làm mới về kích thước cũng như nâng cấp đáng kể về hệ thống cảm biến và dung lượng pin khi sử dụng, đây sẽ là một sự lựa chọn hoàn hảo dành cho tay của bạn.',4 ,'SamSungFit2.jpg',4, 340000)
 Insert into Products values ('Samsung Gear S2', 1289000 , N'Specifications of Đồng hồ thông minh Samsung Gear S2 Sport 3G nghe gọi',4 ,'SamSungGearS2.jpg',4, 0)

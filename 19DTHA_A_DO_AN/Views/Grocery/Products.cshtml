@@ -14,7 +14,7 @@
         <h3 class="margin-top">
             @ViewBag.Title
         </h3>
-        <div class="w3ls_w3l_banner_nav_right_grid1">
+        <div class="w3ls_w3l_banner_nav_right_grid1  text-center">
             @foreach (var product in Model)
             {
                 <div class="col-md-3 w3ls_w3l_banner_left margin-top">
@@ -26,24 +26,24 @@
                             <div class="agile_top_brand_left_grid1">
                                 <figure>
                                     <div class="snipcart-item block">
-                                        <div class="snipcart-thumb text-center">
+                                        <div class="snipcart-thumb">
+                                                <a href="@Url.Action("Single", "Grocery", new { id = product.Id})"><img src="~/Asset/images/@product.Image" alt="@product.Image" class="img-responsive" /></a>
+                                                <p>@product.Name</p>
+                                                @{ var money = product.Price - product.DiscountAmount;}
 
-                                            <a href="@Url.Action("Single", "Grocery", new { id = product.Id})"><img src="~/Asset/images/@product.Image" alt=" " class="img-responsive" /></a>
-                                            <p>@product.Name</p>
-                                            @{ var money = product.Price - product.DiscountAmount;}
-
-                                            <h4>@money @if (money < product.Price)
-                                            {<span>@product.Price</span>}</h4>
-
+                                                <h4>
+                                                    @money @if (money < product.Price)
+                                                {<span>@product.Price</span>}
+                                                </h4>
                                         </div>
-                                        <div class="snipcart-details">
-                                            <form action="@Url.Action("Single", "Grocery", new { id = product.Id})">
-                                                <fieldset>
-                                                    <input type="submit" name="submit" value="chi tiết sản phẩm" class="button runCart" data-request-url="@Url.Action("ShopCart", "Grocery")" />
-                                                </fieldset>
-                                            </form>
+                                            <div class="snipcart-details">
+                                                <form action="@Url.Action("Single", "Grocery", new { id = product.Id})">
+                                                    <fieldset>
+                                                        <input type="submit" name="submit" value="chi tiết sản phẩm" class="button runCart" data-request-url="@Url.Action("ShopCart", "Grocery")" />
+                                                    </fieldset>
+                                                </form>
+                                            </div>
                                         </div>
-                                    </div>
                                 </figure>
                             </div>
                         </div>
