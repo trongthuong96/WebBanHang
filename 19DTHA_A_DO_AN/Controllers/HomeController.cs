@@ -25,7 +25,7 @@ namespace _19DTHA_A_DO_AN.Controllers
 
             if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
             {
-                products = products
+                products = _dbContext.Products
                     .Where(s => s.Name.ToLower().Contains(searchString.ToLower()))
                     .ToList().ToPagedList(page, pagesize); //lọc theo chuỗi tìm kiếm
             }
