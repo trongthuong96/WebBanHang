@@ -30,38 +30,43 @@
             <div class="w3agile_description">
                 <h4>Description :</h4>
                 <p>
-                    @Html.DisplayFor(m=>i.Description)
+                    @i.Description
                 </p>
             </div>
             <div class="snipcart-item block">
                 <div class="snipcart-thumb agileinfo_single_right_snipcart">
-                    <h4>@Html.DisplayFor(m => i.Price)<span>$25.00</span></h4>
+                    @{ var money = i.Price - i.DiscountAmount;}
+
+                    <h4>
+                        @money @if (money < i.Price)
+                        {<span>@i.Price</span>}
+                    </h4>
                 </div>
                 <div class="snipcart-details agileinfo_single_right_details">
 
                     @using (Html.BeginForm("Single", "Grocery", FormMethod.Post))
                     {
 
-                         @Html.AntiForgeryToken()
-                        
+                        @Html.AntiForgeryToken()
+
                         <fieldset>
                             @if (User.Identity.IsAuthenticated)
                             {
                                 <input type="hidden" name="cmd" value="_cart" />
                                 <input type="hidden" name="add" value="1" />
-                                <input type="hidden" name="business" value=" " />
+                                <input type="hidden" name="business" value="@User.Identity.Name" />
                                 <input type="hidden" name="item_name" value="@i.Name" />
                                 <input type="hidden" name="amount" value="@i.Price" />
-                                <input type="hidden" name="discount_amount" value="1.00" />
+                                <input type="hidden" name="discount_amount" value="@i.DiscountAmount" />
                                 <input type="hidden" name="currency_code" value="USD" />
                                 <input type="hidden" name="return" value=" " />
                                 <input type="hidden" name="cancel_return" value=" " />
                             }
-                                <input type="submit" name="submit" value="Add to cart" class="button runCart" data-request-url="@Url.Action("ShopCart", "Grocery")" />
+                            <input type="submit" name="submit" value="Add to cart" class="button runCart" data-request-url="@Url.Action("ShopCart", "Grocery")" />
                         </fieldset>
-                       
+
                     }
-                    </div>
+                </div>
             </div>
         </div>
         <div class="clearfix"> </div>
@@ -69,5 +74,5 @@
     }
 </div>
 <div class="clearfix"></div>
-	</div>
+</div>
 <!-- //brands -->

@@ -12,9 +12,15 @@ namespace _19DTHA_A_DO_AN.Models.GroceryModel
         [Key]
         public int Id { get; set; }
 
+        [Display(Name = "Tên Sản Phẩm")]
         public string Name { get; set; }
+        [Display(Name = "Giá Sản Phẩm")]
         public double Price { get; set; }
+        [Display(Name = "Giá Khuyến Mãi")]
+        public double DiscountAmount { get; set; }
+        [Display(Name = "Chi tiết sẩn phẩm")]
         public string Description { get; set; }
+        [Display(Name = "Ảnh")]
         public string Image { get; set; }
 
         [ForeignKey("ProductType")]

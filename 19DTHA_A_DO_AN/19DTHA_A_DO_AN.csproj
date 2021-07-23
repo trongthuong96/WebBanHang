@@ -196,6 +196,18 @@
     <Compile Include="Migrations\202107181057409_ApplyManufacturer_ColumnImageProduct.Designer.cs">
       <DependentUpon>202107181057409_ApplyManufacturer_ColumnImageProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107210105239_ApplyColumnDiscountAmountOfProduct.cs" />
+    <Compile Include="Migrations\202107210105239_ApplyColumnDiscountAmountOfProduct.Designer.cs">
+      <DependentUpon>202107210105239_ApplyColumnDiscountAmountOfProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107230102347_addNameIdentity.cs" />
+    <Compile Include="Migrations\202107230102347_addNameIdentity.Designer.cs">
+      <DependentUpon>202107230102347_addNameIdentity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107230122223_addName1Identity.cs" />
+    <Compile Include="Migrations\202107230122223_addName1Identity.Designer.cs">
+      <DependentUpon>202107230122223_addName1Identity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\GroceryModel\Manufacturer.cs" />
@@ -463,6 +475,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107181057409_ApplyManufacturer_ColumnImageProduct.resx">
       <DependentUpon>202107181057409_ApplyManufacturer_ColumnImageProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107210105239_ApplyColumnDiscountAmountOfProduct.resx">
+      <DependentUpon>202107210105239_ApplyColumnDiscountAmountOfProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107230102347_addNameIdentity.resx">
+      <DependentUpon>202107230102347_addNameIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107230122223_addName1Identity.resx">
+      <DependentUpon>202107230122223_addName1Identity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -11,6 +11,7 @@ namespace _19DTHA_A_DO_AN.Models.GroceryModel
         [Key]
         public int id { get; set; }
 
+        [Display(Name = "Tên loại sản phẩm")]
         public string Name { get; set; }
 
         public ICollection<Product> Products { get; set; }

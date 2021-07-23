@@ -30,7 +30,14 @@ namespace _19DTHA_A_DO_AN.Areas.admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            /*Product product = db.Products.Find(id);*/
+
+            var product = db.Products
+                .Include(p => p.Manufacturer)
+                .Include(p => p.ProductType)
+                .Where(p => p.Id == id)
+                .ToList();
+
             if (product == null)
             {
                 return HttpNotFound();
@@ -95,6 +102,7 @@ namespace _19DTHA_A_DO_AN.Areas.admin.Controllers
             {
                 return HttpNotFound();
             }
+          
             ViewBag.ManufacturerId = new SelectList(db.Manufacturers, "Id", "Name", product.ManufacturerId);
             ViewBag.ProductTypeId = new SelectList(db.ProductTypes, "id", "Name", product.ProductTypeId);
             return View(product);

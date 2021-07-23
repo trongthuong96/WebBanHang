@@ -1,4 +1,4 @@
-﻿@model _19DTHA_A_DO_AN.Models.GroceryModel.Product
+﻿@model IList<_19DTHA_A_DO_AN.Models.GroceryModel.Product>
 
 @{
     ViewBag.Title = "Details";
@@ -6,62 +6,66 @@
 }
 
 <h2>Details</h2>
+@foreach (var item in Model)
+{
+    <div>
+        <h4>Product</h4>
+        <hr />
 
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Manufacturer.Name)
-        </dt>
+        <dl class="dl-horizontal">
+            <dt>
+                Nhà sản xuất
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Manufacturer.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => item.Manufacturer.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductType.Name)
-        </dt>
+            <dt>
+                Loại sản phẩm
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductType.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => item.ProductType.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <dt>
+                Tên sản phẩm
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => item.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+            <dt>
+                Giá sản phẩm
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => item.Price)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <dt>
+                Chi tiết
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => item.Description)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
+            <dt>
+                Ảnh
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => item.Image)
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        </dl>
+       
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

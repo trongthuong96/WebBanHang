@@ -65,8 +65,8 @@ namespace _19DTHA_A_DO_AN.Models
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "UserName")]
-        public string UserName { get; set; }
+        [StringLength(255)]
+        public string Name { get; set; }
 
         [Required]
         [EmailAddress]

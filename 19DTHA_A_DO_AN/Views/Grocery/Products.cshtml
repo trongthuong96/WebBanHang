@@ -29,23 +29,17 @@
                                         <div class="snipcart-thumb text-center">
 
                                             <a href="@Url.Action("Single", "Grocery", new { id = product.Id})"><img src="~/Asset/images/@product.Image" alt=" " class="img-responsive" /></a>
-                                            <p>@Html.DisplayFor(m => product.Name)</p>
-                                            <h4>@Html.DisplayFor(m => product.Price) <span>$5.00</span></h4>
+                                            <p>@product.Name</p>
+                                            @{ var money = product.Price - product.DiscountAmount;}
+
+                                            <h4>@money @if (money < product.Price)
+                                            {<span>@product.Price</span>}</h4>
 
                                         </div>
                                         <div class="snipcart-details">
-                                            <form action="#" method="post">
+                                            <form action="@Url.Action("Single", "Grocery", new { id = product.Id})">
                                                 <fieldset>
-                                                    <input type="hidden" name="cmd" value="_cart" />
-                                                    <input type="hidden" name="add" value="1" />
-                                                    <input type="hidden" name="business" value=" " />
-                                                    <input type="hidden" name="item_name" value="knorr instant soup" />
-                                                    <input type="hidden" name="amount" value="3.00" />
-                                                    <input type="hidden" name="discount_amount" value="1.00" />
-                                                    <input type="hidden" name="currency_code" value="USD" />
-                                                    <input type="hidden" name="return" value=" " />
-                                                    <input type="hidden" name="cancel_return" value=" " />
-                                                    <input type="submit" name="submit" value="Add to cart" class="button" />
+                                                    <input type="submit" name="submit" value="chi tiết sản phẩm" class="button runCart" data-request-url="@Url.Action("ShopCart", "Grocery")" />
                                                 </fieldset>
                                             </form>
                                         </div>
