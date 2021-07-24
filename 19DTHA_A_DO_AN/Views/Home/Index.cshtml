@@ -78,7 +78,7 @@
                                             <p>@p.Name</p>
                                             @{ var money = p.Price - p.DiscountAmount;}
                                             
-                                        <h4>@money @if (money < p.Price){<span>@p.Price</span>}</h4>
+                                        <h4>@money đ @if (money < p.Price){<span>@p.Price đ</span>}</h4>
                                         </div>
                                         <div class="snipcart-details top_brand_home_details">
                                             <form action="@Url.Action("Single", "Grocery", new { id = p.Id})">

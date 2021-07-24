@@ -38,8 +38,8 @@
                     @{ var money = i.Price - i.DiscountAmount;}
 
                     <h4>Giá:
-                        @money @if (money < i.Price)
-                        {<span>@i.Price</span>}
+                        @money đ @if (money < i.Price)
+                        {<span>@i.Price đ</span>}
                     </h4>
                 </div>
                 <div class="snipcart-details agileinfo_single_right_details">
@@ -58,7 +58,7 @@
                                 <input type="hidden" name="item_name" value="@i.Name" />
                                 <input type="hidden" name="amount" value="@i.Price" />
                                 <input type="hidden" name="discount_amount" value="@i.DiscountAmount" />
-                                <input type="hidden" name="currency_code" value="USD" />
+                                <input type="hidden" name="currency_code" value="VND" />
                                 <input type="hidden" name="return" value=" " />
                                 <input type="hidden" name="cancel_return" value=" " />
                             }

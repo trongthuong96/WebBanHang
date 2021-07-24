@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * minicart
  * The Mini Cart is a great way to improve your PayPal shopping cart integration.
  *
@@ -2406,26 +2406,26 @@ var currencies = {
     TTD: { before: 'TT$' },
     TWD: { before: 'NT$' },
     UAH: { before: '\u20b4' },
-    USD: { before: '$', code: true },
+    USD: { before: '$', code: false },
     UYU: { before: '$U' },
     VEF: { before: 'Bs' },
-    VND: { before: '\u20ab' },
+    VND: { before: '\u20ab', code: true },
     XCD: { before: '$', code: true },
     ZAR: { before: 'R' }
 };
 
 
 module.exports = function currency(amount, config) {
-    var code = config && config.currency || 'USD',
+    var code = config && config.currency || 'VND',
         value = currencies[code],
         before = value.before || '',
         after = value.after || '',
-        length = value.length || 2,
+        length = value.length || 0,
         showCode = value.code && config && config.showCode,
         result = amount;
 
     if (config && config.format) {
-        result = before + result.toFixed(length) + after;
+        result = result.toFixed(length) + before + after;
     }
 
     if (showCode) {
