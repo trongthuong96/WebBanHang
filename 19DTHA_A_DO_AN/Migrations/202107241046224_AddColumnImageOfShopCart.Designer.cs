@@ -7,13 +7,13 @@ namespace _19DTHA_A_DO_AN.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ApplyColumnDiscountAmountOfProduct : IMigrationMetadata
+    public sealed partial class AddColumnImageOfShopCart : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ApplyColumnDiscountAmountOfProduct));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddColumnImageOfShopCart));
         
         string IMigrationMetadata.Id
         {
-            get { return "202107210105239_ApplyColumnDiscountAmountOfProduct"; }
+            get { return "202107241046224_AddColumnImageOfShopCart"; }
         }
         
         string IMigrationMetadata.Source

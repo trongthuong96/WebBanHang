@@ -6,14 +6,14 @@ namespace _19DTHA_A_DO_AN.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ApplyIdentity : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    public sealed partial class AllTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ApplyIdentity));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AllTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "202107180032142_ApplyIdentity"; }
+            get { return "202107240646210_AllTable"; }
         }
         
         string IMigrationMetadata.Source

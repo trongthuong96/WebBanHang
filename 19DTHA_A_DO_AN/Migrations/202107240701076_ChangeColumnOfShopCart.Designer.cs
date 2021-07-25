@@ -7,13 +7,13 @@ namespace _19DTHA_A_DO_AN.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class addNameIdentity : IMigrationMetadata
+    public sealed partial class ChangeColumnOfShopCart : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addNameIdentity));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeColumnOfShopCart));
         
         string IMigrationMetadata.Id
         {
-            get { return "202107230102347_addNameIdentity"; }
+            get { return "202107240701076_ChangeColumnOfShopCart"; }
         }
         
         string IMigrationMetadata.Source

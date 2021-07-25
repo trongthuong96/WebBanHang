@@ -61,12 +61,21 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -173,46 +182,39 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\ManufacturersController.cs" />
     <Compile Include="Areas\admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\admin\Controllers\ProductTypesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\api\ShopCartsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\GroceryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202107180032142_ApplyIdentity.cs" />
-    <Compile Include="Migrations\202107180032142_ApplyIdentity.Designer.cs">
-      <DependentUpon>202107180032142_ApplyIdentity.cs</DependentUpon>
+    <Compile Include="Migrations\202107240646210_AllTable.cs" />
+    <Compile Include="Migrations\202107240646210_AllTable.Designer.cs">
+      <DependentUpon>202107240646210_AllTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202107180040094_Product_ProductType.cs" />
-    <Compile Include="Migrations\202107180040094_Product_ProductType.Designer.cs">
-      <DependentUpon>202107180040094_Product_ProductType.cs</DependentUpon>
+    <Compile Include="Migrations\202107240701076_ChangeColumnOfShopCart.cs" />
+    <Compile Include="Migrations\202107240701076_ChangeColumnOfShopCart.Designer.cs">
+      <DependentUpon>202107240701076_ChangeColumnOfShopCart.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202107181057409_ApplyManufacturer_ColumnImageProduct.cs" />
-    <Compile Include="Migrations\202107181057409_ApplyManufacturer_ColumnImageProduct.Designer.cs">
-      <DependentUpon>202107181057409_ApplyManufacturer_ColumnImageProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107210105239_ApplyColumnDiscountAmountOfProduct.cs" />
-    <Compile Include="Migrations\202107210105239_ApplyColumnDiscountAmountOfProduct.Designer.cs">
-      <DependentUpon>202107210105239_ApplyColumnDiscountAmountOfProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107230102347_addNameIdentity.cs" />
-    <Compile Include="Migrations\202107230102347_addNameIdentity.Designer.cs">
-      <DependentUpon>202107230102347_addNameIdentity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107230122223_addName1Identity.cs" />
-    <Compile Include="Migrations\202107230122223_addName1Identity.Designer.cs">
-      <DependentUpon>202107230122223_addName1Identity.cs</DependentUpon>
+    <Compile Include="Migrations\202107241046224_AddColumnImageOfShopCart.cs" />
+    <Compile Include="Migrations\202107241046224_AddColumnImageOfShopCart.Designer.cs">
+      <DependentUpon>202107241046224_AddColumnImageOfShopCart.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\GroceryModel\Bill.cs" />
+    <Compile Include="Models\GroceryModel\Bill_Detail.cs" />
     <Compile Include="Models\GroceryModel\Manufacturer.cs" />
     <Compile Include="Models\GroceryModel\Product.cs" />
     <Compile Include="Models\GroceryModel\ProductType.cs" />
+    <Compile Include="Models\GroceryModel\ShopCart.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -356,6 +358,7 @@
     <Content Include="Views\Grocery\Vegetables.cshtml" />
     <Content Include="Views\Grocery\Menu.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Grocery\Payment.cshtml" />
     <Content Include="Views\Grocery\ShopCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -377,23 +380,14 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202107180032142_ApplyIdentity.resx">
-      <DependentUpon>202107180032142_ApplyIdentity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107240646210_AllTable.resx">
+      <DependentUpon>202107240646210_AllTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107180040094_Product_ProductType.resx">
-      <DependentUpon>202107180040094_Product_ProductType.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107240701076_ChangeColumnOfShopCart.resx">
+      <DependentUpon>202107240701076_ChangeColumnOfShopCart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107181057409_ApplyManufacturer_ColumnImageProduct.resx">
-      <DependentUpon>202107181057409_ApplyManufacturer_ColumnImageProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107210105239_ApplyColumnDiscountAmountOfProduct.resx">
-      <DependentUpon>202107210105239_ApplyColumnDiscountAmountOfProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107230102347_addNameIdentity.resx">
-      <DependentUpon>202107230102347_addNameIdentity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107230122223_addName1Identity.resx">
-      <DependentUpon>202107230122223_addName1Identity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107241046224_AddColumnImageOfShopCart.resx">
+      <DependentUpon>202107241046224_AddColumnImageOfShopCart.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

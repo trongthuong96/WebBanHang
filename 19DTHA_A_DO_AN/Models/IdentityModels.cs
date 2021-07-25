@@ -26,6 +26,7 @@ namespace _19DTHA_A_DO_AN.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }
         public DbSet<Manufacturer> Manufacturers { get; set; }
+        public DbSet<ShopCart> ShopCarts { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

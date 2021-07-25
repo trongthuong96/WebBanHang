@@ -1,9 +1,158 @@
-﻿
+﻿@model IEnumerable<_19DTHA_A_DO_AN.Models.GroceryModel.ShopCart>
+@using Microsoft.AspNet.Identity;
 @{
     ViewBag.Title = "ShopCart";
     Layout = "~/Views/Shared/_LayoutGrocery.cshtml";
 }
 
-<h3>Thanh Toán</h3>
-<div class="clearfix">
+<div class="w3l_banner_nav_right">
+    <div class="privacy about">
+        <h3>@ViewBag.Title</h3>
+
+        <div class="checkout-right">
+            <table class="timetable_sub">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Hình</th>
+                        <th>@Html.DisplayNameFor(model => model.ProductName)</th>
+                        <th>@Html.DisplayNameFor(model => model.Quatity)</th>
+                        <th>@Html.DisplayNameFor(model => model.Price)</th>
+
+                        <th>@Html.DisplayNameFor(model => model.Total)</th>
+                        <th>Xóa Sản Phẩm</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int i = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+
+                        <tr class="rem1">
+                            <td class="invert">
+                                @{i = i + 1;} @i
+                            </td>
+                            <td class="invert-image"><a href="@Url.Action("Single", "Grocery", new { id = item.ProductId})"><img src="~/Asset/images/@item.Image" alt=" " class="img-responsive"></a></td>
+                            <td class="invert">@item.ProductName</td>
+                            <td class="invert">
+                                <div class="quantity">
+                                    <div class="quantity-select">
+                                        <input type="number" class="value" value="@item.Quatity" min="1" max="1000" />
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="invert">@String.Format("{0:0,0}", @item.Price)đ</td>
+
+                            <td class="invert">@String.Format("{0:0,0}", @item.Total)đ</td>
+                            <td class="invert">
+                                <div class="rem">
+                                    <div><a href="#" data-delete-ProductId="@item.ProductId" class="close1 js-toggle-shopCart"></a></div>
+                                </div>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="checkout-left">
+            <div class="col-md-4 checkout-left-basket">
+                <h4>Tổng Tiền Giỏ Hàng</h4>
+                <ul>
+                    @{ double tong = 0;}
+                    @foreach (var item in Model)
+                    {
+                        <li>@item.ProductName <i>-</i> <span>@String.Format("{0:0,0}", @item.Total) đ</span></li>
+                        { tong = tong + item.Total; }
+                    }
+                    <li>Tổng Tiền<i>-</i> <span>@String.Format("{0:0,0}", @tong) đ</span></li>
+                </ul>
+            </div>
+            <div class="col-md-8 address_form_agile">
+                <h4>Add a new Details</h4>
+                <form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
+                    <section class="creditly-wrapper wthree, w3_agileits_wrapper">
+                        <div class="information-wrapper">
+                            <div class="first-row form-group">
+                                <div class="controls">
+                                    <label class="control-label">Full name: </label>
+                                    <input class="billing-address-name form-control" type="text" name="name" placeholder="Full name">
+                                </div>
+                                <div class="w3_agileits_card_number_grids">
+                                    <div class="w3_agileits_card_number_grid_left">
+                                        <div class="controls">
+                                            <label class="control-label">Mobile number:</label>
+                                            <input class="form-control" type="text" placeholder="Mobile number">
+                                        </div>
+                                    </div>
+                                    <div class="w3_agileits_card_number_grid_right">
+                                        <div class="controls">
+                                            <label class="control-label">Landmark: </label>
+                                            <input class="form-control" type="text" placeholder="Landmark">
+                                        </div>
+                                    </div>
+                                    <div class="clear"> </div>
+                                </div>
+                                <div class="controls">
+                                    <label class="control-label">Town/City: </label>
+                                    <input class="form-control" type="text" placeholder="Town/City">
+                                </div>
+                                <div class="controls">
+                                    <label class="control-label">Address type: </label>
+                                    <select class="form-control option-w3ls">
+                                        <option>Office</option>
+                                        <option>Home</option>
+                                        <option>Commercial</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="submit check_out">Delivery to this Address</button>
+                        </div>
+                    </section>
+                </form>
+                <div class="checkout-right-basket">
+                    <a href="payment.html">Make a Payment <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                </div>
+            </div>
+
+            <div class="clearfix"> </div>
+
+        </div>
+
+    </div>
+    <!-- //about -->
 </div>
+<div class="clearfix"></div>
+
+@section scripts
+{
+
+    <script>
+        $(document).ready(function () {
+            $(".js-toggle-shopCart").click(function (e) {
+                e.preventDefault();
+                var link = $(e.target);
+                   
+                $.ajax({
+                    url: "/api/shopcarts/" + link.attr("data-delete-ProductId"),
+                    method: "DELETE"
+                })
+                    .done(function () {
+                        link.parents("tr").fadeOut(function () {
+                            $(this).remove();
+                        });
+                    })
+                    .fail(function () {
+                        alert("Something failed!");
+                    });
+                   
+            });
+        });
+    </script>
+}
+
+

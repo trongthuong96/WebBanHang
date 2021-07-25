@@ -1,11 +1,13 @@
 ﻿using _19DTHA_A_DO_AN.Models;
 using _19DTHA_A_DO_AN.Models.GroceryModel;
+using Microsoft.AspNet.Identity;
 using PagedList;
 using PagedList.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -62,8 +64,59 @@ namespace _19DTHA_A_DO_AN.Controllers
             return View();
         }
 
+        public ActionResult Payment()
+        {
+            return View();
+        }
+
+        // GET:
+        [Authorize]
         public ActionResult ShopCart()
         {
+            string UserId = User.Identity.GetUserId();
+            var shopCart = _dbContext.ShopCarts
+                .Where(p => p.UserId == UserId)
+                .ToList();
+
+            if (shopCart == null)
+            {
+                return HttpNotFound();
+            }
+            return View(shopCart);
+        }
+
+        // POST:
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult ShopCart([Bind(Include = "UserId,ProductId,Image,ProductName,Quatity,Price")]ShopCart shopCart)
+        {
+            shopCart.Total = shopCart.Price * shopCart.Quatity;
+   
+            ShopCart shopCart1 = _dbContext.ShopCarts.Find(shopCart.UserId, shopCart.ProductId);
+
+            if (shopCart1 != null)
+            {
+                shopCart1.Quatity = shopCart.Quatity;
+                shopCart1.Total = shopCart1.Price * shopCart1.Quatity;
+                if (ModelState.IsValid)
+                {
+                    _dbContext.Entry(shopCart1).State = EntityState.Modified;
+                    _dbContext.SaveChanges();
+                    return RedirectToAction("ShopCart");
+                }
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    _dbContext.ShopCarts.Add(shopCart);
+                    _dbContext.SaveChanges();
+                    return RedirectToAction("ShopCart");
+                }
+            }
             return View();
         }
     }

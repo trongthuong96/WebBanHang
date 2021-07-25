@@ -30,5 +30,7 @@ namespace _19DTHA_A_DO_AN.Models.GroceryModel
         [ForeignKey("Manufacturer")]
         public int ManufacturerId { get; set; }
         public Manufacturer Manufacturer { get; set; }
+
+        public ICollection<Bill_Detail> Bill_Details { get; set; }
     }
 }

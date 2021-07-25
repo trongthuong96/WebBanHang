@@ -31,10 +31,10 @@
                                                 <p>@product.Name</p>
                                                 @{ var money = product.Price - product.DiscountAmount;}
 
-                                                <h4>
-                                                    @money đ @if (money < product.Price)
-                                                {<span>@product.Price đ</span>}
-                                                </h4>
+                                        <h4>
+                                            @String.Format("{0:0,0}", money)đ @if (money < product.Price)
+                                            {<span>@String.Format("{0:0,0}", product.Price)đ</span>}
+                                        </h4>
                                         </div>
                                             <div class="snipcart-details">
                                                 <form action="@Url.Action("Single", "Grocery", new { id = product.Id})">
