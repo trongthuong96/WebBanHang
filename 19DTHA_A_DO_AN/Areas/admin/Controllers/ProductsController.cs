@@ -113,9 +113,9 @@ namespace _19DTHA_A_DO_AN.Areas.admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Price,Description,Image,ProductTypeId,ManufacturerId")] Product product, HttpPostedFileBase editImage)
+        public ActionResult Edit([Bind(Include = "Id,Name,Price,DiscountAmount,Description,Image,ProductTypeId,ManufacturerId")] Product product, HttpPostedFileBase editImage)
         {
-            Product modifyProduct = db.Products.Find(product.Id);
+            Product modifyProduct = product;
 
             if (modifyProduct != null)
             {
